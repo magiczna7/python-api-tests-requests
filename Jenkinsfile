@@ -25,6 +25,11 @@ pipeline {
                             '''
                         }
                     }
+                    post {
+                        always {
+                            archiveArtifacts artifacts: 'report_312.html', allowEmptyArchive: true
+                        }
+                    }
                 }
 
                 stage('Python 3.13 Tests') {
@@ -39,6 +44,11 @@ pipeline {
                                 pip install -r requirements.txt
                                 pytest --html=report_313.html --self-contained-html
                             '''
+                        }
+                    }
+                    post {
+                        always {
+                            archiveArtifacts artifacts: 'report_313.html', allowEmptyArchive: true
                         }
                     }
                 }
