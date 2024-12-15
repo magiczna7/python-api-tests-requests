@@ -27,12 +27,16 @@ pipeline {
                     }
                     post {
                         always {
+                            // Archive the HTML report as an artifact so it can be accessed
                             archiveArtifacts artifacts: 'report_312.html', allowEmptyArchive: true
+
+                            // Publish the HTML report using the HTML Publisher Plugin
                             publishHTML(target: [
                                 reportName: 'Python 3.12 Test Report',
-                                reportDir: '.',
-                                reportFiles: 'report_312.html',
-                                keepAll: true
+                                reportDir: '.',  // The directory where the report is located
+                                reportFiles: 'report_312.html',  // The HTML report file
+                                keepAll: true,  // Keeps all reports for all builds
+                                alwaysLinkToLatest: true  // Always link to the latest report
                             ])
                         }
                     }
@@ -54,12 +58,16 @@ pipeline {
                     }
                     post {
                         always {
-                            archiveArtifacts artifacts: 'report_312.html', allowEmptyArchive: true
+                            // Archive the HTML report as an artifact so it can be accessed
+                            archiveArtifacts artifacts: 'report_313.html', allowEmptyArchive: true
+
+                            // Publish the HTML report using the HTML Publisher Plugin
                             publishHTML(target: [
-                                reportName: 'Python 3.12 Test Report',
-                                reportDir: '.',
-                                reportFiles: 'report_312.html',
-                                keepAll: true
+                                reportName: 'Python 3.13 Test Report',
+                                reportDir: '.',  // The directory where the report is located
+                                reportFiles: 'report_313.html',  // The HTML report file
+                                keepAll: true,  // Keeps all reports for all builds
+                                alwaysLinkToLatest: true  // Always link to the latest report
                             ])
                         }
                     }
