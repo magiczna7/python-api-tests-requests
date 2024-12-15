@@ -17,10 +17,12 @@ pipeline {
                     }
                     steps {
                         script {
-                            sh 'python3.12 -m venv12 .venv'
-                            sh '. .venv/bin/activate'
-                            sh 'pip install -r requirements.txt'
-                            sh 'pytest --html=report_313.html --self-contained-html'
+                            sh '''
+                                python3.12 -m venv .venv12
+                                . .venv12/bin/activate
+                                pip install -r requirements.txt
+                                pytest --html=report_312.html --self-contained-html
+                            '''
                         }
                     }
                 }
@@ -31,10 +33,12 @@ pipeline {
                     }
                     steps {
                         script {
-                            sh 'python3.13 -m venv13 .venv'
-                            sh '. .venv/bin/activate'
-                            sh 'pip install -r requirements.txt'
-                            sh 'pytest --html=report_313.html --self-contained-html'
+                            sh '''
+                                python3.13 -m venv .venv13
+                                . .venv13/bin/activate
+                                pip install -r requirements.txt
+                                pytest --html=report_313.html --self-contained-html
+                            '''
                         }
                     }
                 }
