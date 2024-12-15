@@ -5,8 +5,8 @@ pipeline {
             steps {
                 sh 'python -m venv .venv'
                 sh '. .venv/bin/activate'
-                sh 'python -m pip install --upgrade pip'
-                sh 'pip install -r requirements.txt'
+                sh 'python -m pip install --user --upgrade pip'
+                sh 'pip install --user -r requirements.txt'
                 sh 'pytest --html=report_312.html --self-contained-html'
             }
         }
