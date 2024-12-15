@@ -1,11 +1,16 @@
 pipeline {
-    agent {
-        docker {
-            args '-u root:root'
-        }
-    }
+    agent any
     stages {
-        parallel {
+        stage('Prepare Environment') {
+            steps {
+                script {
+                    checkout scm
+                }
+            }
+        }
+
+        stage('Run Tests on Python 3.12 and 3.13') {
+            parallel {
                 stage('Python 3.12 Tests') {
                     agent {
                         docker { image 'python:3.12' }
@@ -26,7 +31,6 @@ pipeline {
                     }
                     steps {
                         script {
-
                             sh 'python3.13 -m venv13 .venv'
                             sh '. .venv/bin/activate'
                             sh 'pip install -r requirements.txt'
@@ -34,6 +38,7 @@ pipeline {
                         }
                     }
                 }
+            }
         }
     }
 }
