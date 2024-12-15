@@ -28,6 +28,12 @@ pipeline {
                     post {
                         always {
                             archiveArtifacts artifacts: 'report_312.html', allowEmptyArchive: true
+                            publishHTML(target: [
+                                reportName: 'Python 3.12 Test Report',
+                                reportDir: '.',
+                                reportFiles: 'report_312.html',
+                                keepAll: true
+                            ])
                         }
                     }
                 }
@@ -48,7 +54,13 @@ pipeline {
                     }
                     post {
                         always {
-                            archiveArtifacts artifacts: 'report_313.html', allowEmptyArchive: true
+                            archiveArtifacts artifacts: 'report_312.html', allowEmptyArchive: true
+                            publishHTML(target: [
+                                reportName: 'Python 3.12 Test Report',
+                                reportDir: '.',
+                                reportFiles: 'report_312.html',
+                                keepAll: true
+                            ])
                         }
                     }
                 }
